@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="menu.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="toggle-button" onclick="toggleSidebar()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <button onclick="openPage('page1')">KIT BICOS VAZADOS</button>
+        <button onclick="openPage('page2')">KIT BICOS COLETADOS</button>
+        <button onclick="openPage('page3')">APPS ANDROID</button>
+        <button onclick="openPage('page4')">CHECKERS</button>
+        <!-- Adicione mais opções conforme necessário -->
+    </div>
+
+    <div class="content">
+        <header class="header">
+            <h1>Apenas para uso PRIVADO</h1>
+            <p id="saudacao"></p>
+            <button onclick="logout()">Sair</button>
+        </header>
+
+        <section class="main-content">
+            <h2>Bem-vindo ao Dashboard!</h2>
+            <div id="page1" class="page-content">
+                <h3>Conteúdo da Página 1</h3>
+                <!-- Conteúdo da Página 1 aqui -->
+            </div>
+            <div id="page2" class="page-content">
+                <h3>Conteúdo da Página 2</h3>
+                <!-- Conteúdo da Página 2 aqui -->
+            </div>
+            <div id="page3" class="page-content">
+                <h3> Conteúdo da Página 3</h3>
+            </div>
+            <div id="page4" class="page-content">
+                <h3>Conteúdo da Página 4</h3>
+            
+                <div id="checkerForm" class="checker-form">
+                    <label for="checkerMessage">Escreva sua mensagem:</label>
+                    <input type="text" id="checkerMessage" name="checkerMessage" placeholder="Digite sua mensagem..." autofocus>
+                    <button onclick="enviarMensagemChecker()">Enviar</button>
+                </div>
+            
+                <div id="checkerMessages" class="checker-messages">
+                    <!-- Aqui serão exibidas as mensagens do checker -->
+                </div>
+            </div>            
+        </div>
+        </section>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="menu.js"></script>
+</body>
+</html>
