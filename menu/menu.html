@@ -19,6 +19,7 @@
         <button onclick="openPage('page2')">KIT BICOS COLETADOS</button>
         <button onclick="openPage('page3')">APPS ANDROID</button>
         <button onclick="openPage('page4')">CHECKERS</button>
+        <button onclick="openPage('page5')">CHAT LIVRE</button>
         <!-- Adicione mais opções conforme necessário -->
     </div>
 
@@ -32,18 +33,18 @@
         <section class="main-content">
             <h2>Bem-vindo ao Dashboard!</h2>
             <div id="page1" class="page-content">
-                <h3>Conteúdo da Página 1</h3>
+                <h3>Faça o upload dos kitbicos vazados aqui:</h3>
                 <!-- Conteúdo da Página 1 aqui -->
             </div>
             <div id="page2" class="page-content">
-                <h3>Conteúdo da Página 2</h3>
+                <h3>Faça o upload dos kitbicos coletados aqui:</h3>
                 <!-- Conteúdo da Página 2 aqui -->
             </div>
             <div id="page3" class="page-content">
-                <h3> Conteúdo da Página 3</h3>
+                <h3> Coloque APPS Android Essenciais aqui:</h3>
             </div>
             <div id="page4" class="page-content">
-                <h3>Conteúdo da Página 4</h3>
+                <h3>Coloque o Link dos Checkers aqui:</h3>
             
                 <div id="checkerForm" class="checker-form">
                     <label for="checkerMessage">Escreva sua mensagem:</label>
@@ -54,8 +55,22 @@
                 <div id="checkerMessages" class="checker-messages">
                     <!-- Aqui serão exibidas as mensagens do checker -->
                 </div>
-            </div>            
-        </div>
+            </div>
+            
+            <div id="page5" class="page-content">
+                <h3>Use o Chat Livre para salvar, conversar e escrever a vontade.</h3>
+                <h3>Todos os usuários podem ver o que você publicou.</h3>
+            
+                <div id="chatForm" class="checker-form">
+                    <label for="chatMessage">Escreva sua mensagem:</label>
+                    <input type="text" id="chatMessage" name="chatMessage" placeholder="Digite sua mensagem..." autofocus>
+                    <button onclick="enviarMensagemChat()">Enviar</button>
+                </div>
+            
+                <div id="chatMessages" class="checker-messages">
+                    <!-- Aqui serão exibidas as mensagens do chat -->
+                </div>
+            </div>
         </section>
     </div>
 

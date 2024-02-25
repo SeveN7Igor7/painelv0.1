@@ -13,6 +13,46 @@ firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
+function enviarMensagemChat() {
+    const chatMessageInput = document.getElementById('chatMessage');
+    const nomeUsuario = getNomeUsuario();
+    
+    const mensagem = chatMessageInput.value.trim();
+
+    if (mensagem !== '' && nomeUsuario) {
+        const timestamp = firebase.database.ServerValue.TIMESTAMP;
+        const mensagemData = {
+            mensagem: mensagem,
+            nomeUsuario: nomeUsuario,
+            timestamp: timestamp
+        };
+
+        // Adiciona a mensagem ao banco de dados Firebase para o chat
+        database.ref('chat').push(mensagemData)
+            .then(function () {
+                // Limpa o campo de entrada após enviar a mensagem
+                chatMessageInput.value = '';
+
+                // Adiciona a nova mensagem ao contêiner
+                exibirMensagemChatNoSite(mensagemData);
+            })
+            .catch(function (error) {
+                console.error("Erro ao enviar mensagem do chat:", error);
+            });
+    }
+}
+
+function exibirMensagemChatNoSite(mensagemData) {
+    const chatMessagesContainer = document.getElementById('chatMessages');
+
+    // Cria um elemento para exibir a mensagem do chat
+    const messageElement = document.createElement('div');
+    messageElement.textContent = `${mensagemData.nomeUsuario}: ${mensagemData.mensagem} - ${new Date(mensagemData.timestamp).toLocaleString()}`;
+
+    // Adiciona a mensagem ao início do contêiner (para manter a ordem correta)
+    chatMessagesContainer.insertBefore(messageElement, chatMessagesContainer.firstChild);
+}
+
 function openPage(pageId) {
     // Oculta todos os conteúdos da página
     var pageContents = document.getElementsByClassName('page-content');
@@ -46,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const saudacaoElemento = document.getElementById('saudacao');
     saudacaoElemento.textContent = `Bem-vindo, ${nomeUsuario || 'visitante'}!`;
     exibirCheckers();
+    exibirChat();
 });
 
 function exibirNomeUsuario(nomeUsuario) {
@@ -138,4 +179,23 @@ function enviarMensagemChecker() {
         // Limpa o campo de entrada após enviar a mensagem
         mensagemInput.value = '';
     }
+}
+
+function exibirChat() {
+    var chatMessagesContainer = document.getElementById('chatMessages');
+
+    // Remove mensagens anteriores
+    chatMessagesContainer.innerHTML = '';
+
+    // Obtém as mensagens do chat do banco de dados
+    database.ref('chat').orderByChild('timestamp').on('child_added', function (snapshot) {
+        var chatMessage = snapshot.val();
+
+        // Cria um elemento para exibir a mensagem do chat
+        var messageElement = document.createElement('div');
+        messageElement.textContent = `${chatMessage.nomeUsuario}: ${chatMessage.mensagem} - ${new Date(chatMessage.timestamp).toLocaleString()}`;
+
+        // Adiciona a mensagem ao início do contêiner (para manter a ordem correta)
+        chatMessagesContainer.insertBefore(messageElement, chatMessagesContainer.firstChild);
+    });
 }
