@@ -61,9 +61,7 @@ body {
 }
 
 .content {
-    margin-left: 200px; /* Ajuste conforme necessário */
-    padding: 20px;
-    transition: margin-left 0.5s; /* Adição da transição para o conteúdo */
+    align-items: center;
 }
 
 .header {
@@ -95,6 +93,9 @@ body {
 
 .main-content {
     color: #CBD0F7;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
 }
 
 .page-content {
@@ -107,10 +108,11 @@ body {
 
 .toggle-button {
     position: fixed;
-    top: 20px;
+    top: 40px;
     left: 20px;
     cursor: pointer;
     z-index: 2;
+    margin-top: 40px;
 }
 
 .bar {
@@ -228,4 +230,26 @@ body {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+#saudacao {
+    text-align: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    margin-left: 80px;
+    margin-top: 50px;
+}
+
+.top-bar {
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 30px;
+    align-items: center;
+}
+
+.top-bar img {
+    max-width: 35px;
+    width: auto;
 }
