@@ -230,6 +230,10 @@ body {
         opacity: 1;
         transform: translateX(0);
     }
+
+    #colorfont {
+        font-weight: bold;
+    }
 }
 
 #saudacao {
@@ -246,6 +250,13 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     height: 30px;
     align-items: center;
+}
+
+#colorfont {
+    color: #FFF;
+    text-align: center;
+    margin-left: 100px;
+    margin-top: 10px;
 }
 
 .top-bar img {
