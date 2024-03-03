@@ -13,6 +13,10 @@ firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
+// Inicialize o módulo do Storage após a inicialização do Firebase
+var storage = firebase.storage();
+var storageRef = storage.ref();
+
 function enviarMensagemChat() {
     const chatMessageInput = document.getElementById('chatMessage');
     const nomeUsuario = getNomeUsuario();
@@ -372,5 +376,69 @@ function excluirUsuario() {
                     console.error("Erro ao excluir conta:", error);
                 });
         }
+    });
+}
+
+function exibirDetalhesKitBico(nome) {
+    // Lógica para exibir detalhes do Kit Bico com o nome fornecido
+    // Supondo que você tenha os dados do Kit Bico em algum lugar
+    const kitBico = {
+        nome: "Willian Pereira de Almeida",
+        idade: 31,
+        sexo: "Masculino",
+        modelo: "CNH / SELFIE SEM DOC",
+        posicao: "Frente"
+    };
+
+    // Preencher as informações nas áreas correspondentes
+    document.getElementById("nomeKitBico").textContent = kitBico.nome;
+    document.getElementById("idadeKitBico").textContent = kitBico.idade;
+    document.getElementById("sexoKitBico").textContent = kitBico.sexo;
+    document.getElementById("modeloKitBico").textContent = kitBico.modelo;
+    document.getElementById("posicaoKitBico").textContent = kitBico.posicao;
+
+    // Exibir a div com as informações
+    document.getElementById("informacoesKitBico").style.display = "block";
+}
+
+function visualizarKitBico() {
+    // Substitua o ID do Kit Bico pelo nome da imagem
+    var nomeFrente = 'WhatsApp Image 2024-02-23 at 12.41.50.jpeg';
+    var nomeSelfie = 'WhatsApp Image 2024-02-23 at 12.41.51.jpeg';
+
+    // Crie referências para as imagens no Storage
+    var frenteRef = storageRef.child('kitbicos/' + nomeFrente);
+    var selfieRef = storageRef.child('kitbicos/' + nomeSelfie);
+
+    // Obtenha as URLs das imagens
+    Promise.all([
+        frenteRef.getDownloadURL(),
+        selfieRef.getDownloadURL()
+    ]).then(function (urls) {
+        // Exiba as opções para o usuário
+        var escolha = prompt('Escolha a opção:\n1. Frente\n2. Selfie');
+
+        // Obtenha a URL correspondente à escolha
+        var url;
+        switch (escolha) {
+            case '1':
+                url = urls[0]; // Frente
+                break;
+            case '2':
+                url = urls[1]; // Selfie
+                break;
+            default:
+                alert('Escolha inválida.');
+                return;
+        }
+
+        // Exiba a imagem ou faça o que desejar com a URL
+        console.log('URL da imagem:', url);
+
+        // Abra a imagem em uma nova janela ou guia (substitua conforme necessário)
+        window.open(url, '_blank');
+    }).catch(function (error) {
+        // Trate qualquer erro que ocorra ao obter as URLs
+        console.error('Erro ao obter as URLs das imagens:', error);
     });
 }

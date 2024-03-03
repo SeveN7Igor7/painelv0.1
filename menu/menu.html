@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="menu.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -14,8 +14,8 @@
         }
     </style>
     <div class="top-bar">
-        <img src = "images/avatar.jpg">
-        <p id="colorfont" style="color: #000; text-align: center; margin-left: 17px; margin-top: -30px; font-weight: bold">SALDO : INDEFINIDO</p>
+        <img src="images/avatar.jpg">
+        <p id="colorfont" style="color: #000; text-align: center; margin-left: 17px; margin-top: -30px; font-weight: bold">SALDO: INDEFINIDO</p>
         <p id="perfilfont" style="color:black; text-align: left ; font-family: Arial, Helvetica, sans-serif; margin-top:-24px; margin-left: 38px; font-size:10px; font-weight: bold"> Meu perfil</p>
     </div>
 
@@ -32,6 +32,8 @@
         <button onclick="openPage('page3')">APPS ANDROID</button>
         <button onclick="openPage('page4')">CHECKERS</button>
         <button onclick="openPage('page5')">CHAT LIVRE</button>
+        <button onclick="openPage('page6')">CHECKER CC & LOGIN</button>
+        <button onclick="openPage('page7')">CONSULTAS</button>
         <!-- Adicione mais opções conforme necessário -->
     </div>
 
@@ -47,24 +49,29 @@
             <div id="botoesAdmin"></div>
             <div id="page1" class="page-content">
                 <h3>Faça o upload dos kitbicos vazados aqui:</h3>
-                <section class="kitbico1">
-                    <div class = "areakit">
-                    <div>
-                        <img src = "images/rg.jpg">
-                    </div>
-                    <p id="fontekit"> Kit Bicos com RG FRENTE / VERSO / CNH e selfie Normal</p>
-
-                    <button id="botaokit">TER ACESSO</button>
-                </div>
-                </section>
-            </div>
+            </div>            
             <div id="page2" class="page-content">
-                <h3>Faça o upload dos kitbicos coletados aqui:</h3>
-                <!-- Conteúdo da Página 2 aqui -->
-            </div>
+                <h3>KIT BICOS COLETADOS</h3>
+                <div id="kitBico1" class="kit-box botao" onclick="exibirDetalhesKitBico('Kit Bico 1')">
+                    <h4>KIT BICO 1</h4>
+                </div>
+                
+                <div id="informacoesKitBico" style="display: none;">
+                    <h3>Informações do Kit Bico</h3>
+                    <p><strong>Nome:</strong> <span id="nomeKitBico"></span></p>
+                    <p><strong>Idade:</strong> <span id="idadeKitBico"></span></p>
+                    <p><strong>Sexo:</strong> <span id="sexoKitBico"></span></p>
+                    <p><strong>Modelo:</strong> <span id="modeloKitBico"></span></p>
+                    <p><strong>Posição:</strong> <span id="posicaoKitBico"></span></p>
+                    
+                    <button onclick="visualizarKitBico()">VISUALIZAR</button>
+                </div>
+            </div>            
+                
             <div id="page3" class="page-content">
                 <h3> Coloque APPS Android Essenciais aqui:</h3>
             </div>
+            
             <div id="page4" class="page-content">
                 <h3>Coloque o Link dos Checkers aqui:</h3>
             
@@ -80,7 +87,7 @@
             </div>
             
             <div id="page5" class="page-content">
-                <h3>Use o Chat Livre para salvar, conversar e escrever a vontade.</h3>
+                <h3>Use o Chat Livre para salvar, conversar e escrever à vontade.</h3>
                 <h3>Todos os usuários podem ver o que você publicou.</h3>
             
                 <div id="chatForm" class="checker-form">
@@ -93,11 +100,20 @@
                     <!-- Aqui serão exibidas as mensagens do chat -->
                 </div>
             </div>
+
+            <div id="page6" class="page-content">
+                <h3>EM CONSTRUÇÃO</h3>
+            </div>
+
+            <div id="page7" class="page-content">
+                <h3>EM CONSTRUÇÃO</h3>
+            </div>
         </section>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="menu.js"></script>
 </body>
 </html>
