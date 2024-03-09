@@ -188,6 +188,60 @@ body {
     font-size: 14px;
 }
 
+.page-content .input-container {
+    margin-bottom: 16px;
+}
+
+.page-content label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.page-content textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    height: 150px; /* Defina a altura desejada para o textarea aqui */
+    margin-top: 4px; /* Ajuste conforme necessário para espaçamento entre a label e o textarea */
+}
+
+.consulta-form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.consulta-form input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+
+.consulta-form button {
+    background-color: #5568FE;
+    color: #FFF;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.consulta-form button:hover {
+    background-color: #3447CC;
+}
+
+#outroInput {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+
 @media only screen and (max-width: 768px) {
     .home {
         max-width: 90%;
@@ -313,4 +367,62 @@ body {
     background-color: white;
     color: black;
     border: 2px solid #4CAF50;
+}
+
+/* ... Seu CSS anterior ... */
+
+.page-content .input-container {
+    margin-bottom: 16px;
+}
+
+.page-content label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.page-content textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    height: 150px; /* Defina a altura desejada para o textarea aqui */
+    margin-top: 4px; /* Ajuste conforme necessário para espaçamento entre a label e o textarea */
+}
+
+.consulta-form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.consulta-form input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+
+.consulta-form button {
+    background-color: #5568FE;
+    color: #FFF;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.consulta-form button:hover {
+    background-color: #3447CC;
+}
+
+#outroInput {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    padding: 10px;
+    margin-top: 10px;
 }

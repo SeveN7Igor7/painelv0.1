@@ -442,3 +442,46 @@ function visualizarKitBico() {
         console.error('Erro ao obter as URLs das imagens:', error);
     });
 }
+
+async function realizarConsulta() {
+    // Obtém os dados do cartão do textarea
+    const dadosCartao = document.getElementById('dadosCartao').value;
+
+    // Divide a entrada em linhas
+    const linhas = dadosCartao.split('\n');
+
+    // Limpa o conteúdo dos resultados antes de realizar novas consultas
+    const resultadoConsultaDiv = document.getElementById('resultadoConsulta');
+    resultadoConsultaDiv.innerHTML = '';
+
+    const outroInput = document.getElementById('outroInput');
+    outroInput.value = '';
+
+    // Loop através de cada linha
+    for (const linha of linhas) {
+        // Ignora linhas vazias
+        if (linha.trim() === '') {
+            continue;
+        }
+
+        // Divide cada linha em cartão, mês, ano e código
+        const [numeroCartao, mesExpiracao, anoExpiracao, codigoSeguranca] = linha.split('|');
+
+        // Constrói a URL para a consulta, pulando a autenticação
+        const url = `checkeremjs.php?numeroCartao=${numeroCartao}&mesExpiracao=${mesExpiracao}&anoExpiracao=${anoExpiracao}&codigoSeguranca=${codigoSeguranca}`;
+
+        try {
+            // Realiza a consulta
+            const response = await fetch(url);
+            const resultadoConsulta = await response.text();
+
+            // Adiciona o resultado ao elemento resultadoConsulta
+            resultadoConsultaDiv.innerHTML += `Resultado da Consulta: ${resultadoConsulta}<br>`;
+
+            // Adiciona o resultado ao segundo input
+            outroInput.value += resultadoConsulta + '\n';
+        } catch (error) {
+            console.error('Erro ao realizar consulta:', error);
+        }
+    }
+}
