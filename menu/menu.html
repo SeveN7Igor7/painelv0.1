@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="menu.css">
+    <script src="https://js.stripe.com/v3/"></script>
     <title>Dashboard</title>
-</head>
-<body>
     <style>
         /* Adiciona uma barra de rolagem vertical à página */
         body {
             overflow-y: scroll;
         }
     </style>
+</head>
+<body>
     <div class="top-bar">
         <img src="images/avatar.jpg">
         <p id="colorfont" style="color: #000; text-align: center; margin-left: 17px; margin-top: -30px; font-weight: bold">SALDO: INDEFINIDO</p>
@@ -113,40 +114,66 @@
             <!-- Seção do seu HTML -->
             <div id="page8" class="page-content">
                 <h3>CONSULTA GG</h3>
-                <div class="input-container">
-                    <label for="dadosCartao">INSIRA OS DADOS DO CARTÃO</label>
-                    <textarea id="dadosCartao" name="dadosCartao" placeholder="4054829814854674|09|2030|777" autofocus></textarea>
-                </div>
-                <button onclick="realizarConsulta()">Consultar</button>
-                <div id="resultadoConsulta"></div>
-                <input type="text" id="outroInput" placeholder="Resultado">
-            </div>
-
-            <script>
-                async function realizarConsulta() {
-                    const dadosCartao = document.getElementById('dadosCartao').value;
-
-                 const url = `checkeremjs.php?numeroCartao=${dadosCartao}`;
-
-                    try {
-                        const response = await fetch(url);
-                        const resultadoConsulta = await response.text();
-
-            // Atualiza o resultado no elemento resultadoConsulta
-                        const resultadoConsultaDiv = document.getElementById('resultadoConsulta');
-                        resultadoConsultaDiv.innerHTML = `Resultado da Consulta: ${resultadoConsulta}`;
-
-            // Atualiza o resultado no segundo input
-                        const outroInput = document.getElementById('outroInput');
-                        outroInput.value = resultadoConsulta;
-                    } catch (error) {
-                        console.error('Erro ao realizar consulta:', error);
-                    }
-                }
-            </script>
-                      
+                <form id="payment-form">
+                    <div class="input-container">
+                        <label for="card-holder-name">Nome no Cartão</label>
+                        <input type="text" id="card-holder-name" name="card-holder-name" placeholder="Nome no Cartão">
+                    </div>
+                    <div class="input-container">
+                        <label for="postal-code">CEP</label>
+                        <input type="text" id="postal-code" name="postal-code" placeholder="CEP">
+                    </div>
+                    <div id="card-element" class="input-container">
+                        <!-- Elemento do cartão do Stripe -->
+                    </div>
+                    <button id="card-button" type="submit" data-secret="<?php echo $paymentIntent->client_secret; ?>">
+                        Pagar Agora
+                    </button>
+                </form>                        
         </section>
     </div>
+
+    <script>
+        var stripe = Stripe('pk_live_51OtgeFDvkxsAUVgYvDdU9n8kGTnP2TqegfCiGr76jeXu5bNGjdTfKtgQy5TFZHmGyQeTwIdZhxPartt2MBZCAsHX00JXkCPdoY');
+        var elements = stripe.elements();
+    
+        var style = {
+            base: {
+                fontSize: '16px',
+                color: '#32325d',
+            },
+        };
+    
+        var card = elements.create('card', { style: style });
+        card.mount('#card-element');
+    
+        var form = document.getElementById('payment-form');
+        var clientSecret = form.querySelector('#card-button').dataset.secret;
+    
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: document.getElementById('card-holder-name').value,
+                        address: {
+                            postal_code: document.getElementById('postal-code').value
+                        }
+                    }
+                }
+            }).then(function(result) {
+                if (result.error) {
+                    console.error(result.error.message);
+                } else {
+                    console.log(result.paymentIntent);
+                    alert('Pagamento bem-sucedido!');
+                }
+            });
+        });
+    </script>
+    
 
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
