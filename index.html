@@ -5,137 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Login</title>
-    <style>
-        /* CSS do modal */
-        .modal {
-            display: none; /* Inicialmente oculto */
-            position: fixed;
-            z-index: 999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4); /* Fundo escuro */
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            border-radius: 10px;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        #ftermos {
-            color: black;
-        }
-    </style>
 </head>
 <body>
+    <section class="area-login">
+        <div class="login">
+            <div>
+                <img src="images/fotomenu.jpg">
+            </div>
 
-<!-- Modal -->
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <header class="modal-container-header">
-            <span class="modal-container-title">
-                <svg aria-hidden="true" height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M14 9V4H5v16h6.056c.328.417.724.785 1.18 1.085l1.39.915H3.993A.993.993 0 0 1 3 21.008V2.992C3 2.455 3.449 2 4.002 2h10.995L21 8v1h-7zm-2 2h9v5.949c0 .99-.501 1.916-1.336 2.465L16.5 21.498l-3.164-2.084A2.953 2.953 0 0 1 12 16.95V11zm2 5.949c0 .316.162.614.436.795l2.064 1.36 2.064-1.36a.954.954 0 0 0 .436-.795V13h-5v3.949z" fill="currentColor"></path>
-                </svg>
-                Termos e Serviços
-            </span>
-        </header>
-        <section class="modal-container-body rtf">
-            <span>Seu primeiro acesso? Leia atentamente as informações abaixo: </span>
-
-            <p id="ftermos">O acesso a esse painel é totalmente restrito e privado somente às pessoas autorizadas pelo admin com seus usuários e senhas autenticados. </p>
-
-            <p id="ftermos"> O site pode conter vulnerabilidades web, se caso você encontrar uma, reporte imediatamente ao admin. </p>
-
-            <span>Você tem seus dados de login? O que você pode encontrar ao acessar o Dashboard?</span>
-            <ol>
-                <li>Informações de todos os tipos e totalmente sem filtros.</li>
-                <li>Imagens, acessos e dados totalmente confidenciais.</li>
-                <li>Bate-papo ao vivo com todos os membros do painel.</li>
-                <li>Aplicações e automações originais.</li>
-            </ol>
-
-            <p id="ftermos">Ao aceitar os Termos e Serviços, você está concordando em manter SIGILO sobre as informações abordadas e está concordando em manter o RESPEITO com todos os integrantes do painel. </p>
-
-            <p id="ftermos">O painel fica em constantes mudanças e atualizações mas não interfere em nada no acesso ao Dashboard.</p>
-
-        </section>
-        <footer class="modal-container-footer">
-            <button class="button is-primary" id="acceptButton">Accept</button>
-        </footer>
-    </div>
-</div>
-
-<section class="area-login">
-    <div class="login">
-        <div>
-            <img src="images/fotomenu.jpg">
+            <form method="POST">
+                <input type="text" name="nome" placeholder="nome de usuario" autofocus>
+                <input type="password" name="senha" placeholder="sua senha">
+                <input type="submit" value="entrar">
+            </form>
+            <p>Ainda não tem uma conta? <a href="#">Criar conta</a></p>
         </div>
+    </section>
+    <!-- Scripts do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
-        <form method="POST">
-            <input type="text" name="nome" placeholder="nome de usuario" autofocus>
-            <input type="password" name="senha" placeholder="sua senha">
-            <input type="submit" value="entrar">
-        </form>
-        <p>Ainda não tem uma conta? <a href="#">Criar conta</a></p>
-    </div>
-</section>
-<!-- Scripts do Firebase -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-
-
-<script>
-    // Obter o modal
-    var modal = document.getElementById("myModal");
-
-    // Quando a página carregar, exibir o modal
-    window.onload = function() {
-        modal.style.display = "block";
-    }
-
-    // Obter o botão que fecha o modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // Quando o usuário clicar em <span> (x), feche o modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // Quando o usuário clicar em qualquer lugar fora do modal, feche-o
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    // Adiciona evento de clique ao botão "Accept" para fechar o modal
-    document.getElementById("acceptButton").onclick = function() {
-        modal.style.display = "none";
-    };
-</script>
-
+    <!-- Seu script personalizado -->
+    <script src="script.js"></script>
 </body>
 </html>
