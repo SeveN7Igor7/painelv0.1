@@ -11,9 +11,24 @@
         body {
             overflow-y: scroll;
         }
+        /* Estilos para o ícone de carregamento */
+        #loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
     </style>
 </head>
 <body>
+    <!-- Ícone de carregamento -->
+    <div id="loader">
+        <svg viewBox="25 25 50 50">
+            <circle r="20" cy="50" cx="50"></circle>
+        </svg>
+    </div>
+
     <div class="top-bar">
         <img src="images/avatar.jpg">
         <p id="colorfont" style="color: #000; text-align: center; margin-left: 17px; margin-top: -30px; font-weight: bold">SALDO: INDEFINIDO</p>
@@ -134,43 +149,11 @@
     </div>
 
     <script>
-        var stripe = Stripe('pk_live_51OtgeFDvkxsAUVgYvDdU9n8kGTnP2TqegfCiGr76jeXu5bNGjdTfKtgQy5TFZHmGyQeTwIdZhxPartt2MBZCAsHX00JXkCPdoY');
-        var elements = stripe.elements();
-    
-        var style = {
-            base: {
-                fontSize: '16px',
-                color: '#32325d',
-            },
-        };
-    
-        var card = elements.create('card', { style: style });
-        card.mount('#card-element');
-    
-        var form = document.getElementById('payment-form');
-        var clientSecret = form.querySelector('#card-button').dataset.secret;
-    
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-    
-            stripe.confirmCardPayment(clientSecret, {
-                payment_method: {
-                    card: card,
-                    billing_details: {
-                        name: document.getElementById('card-holder-name').value,
-                        address: {
-                            postal_code: document.getElementById('postal-code').value
-                        }
-                    }
-                }
-            }).then(function(result) {
-                if (result.error) {
-                    console.error(result.error.message);
-                } else {
-                    console.log(result.paymentIntent);
-                    alert('Pagamento bem-sucedido!');
-                }
-            });
+        document.addEventListener("DOMContentLoaded", function() {
+            var loader = document.getElementById("loader");
+            setTimeout(function() {
+                loader.style.display = "none";
+            }, 2000);
         });
     </script>
     
