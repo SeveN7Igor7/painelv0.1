@@ -64,17 +64,11 @@
         <h2>Menu</h2>
         <button onclick="openPage('page1')">KIT BICOS VAZADOS</button>
         <button onclick="openPage('page2')">KIT BICOS COLETADOS</button>
-
         <button onclick="openPage('page3')">APPS ANDROID</button>
-
-
         <button onclick="openPage('page4')">CHECKERS</button>
         <button onclick="openPage('page5')">CHAT LIVRE</button>
         <button onclick="openPage('page6')">CHECKER CC & LOGIN</button>
         <button onclick="openPage('page7')">CONSULTAS</button>
-
-        <button onclick="openPage('page8')">CONSULTA GG</button>
-
         <button onclick="openPage('page8')">DOWNLOADS</button>
 
         <!-- Adicione mais opções conforme necessário -->
@@ -154,27 +148,7 @@
             <div id="page7" class="page-content">
                 <h3>EM CONSTRUÇÃO</h3>
             </div>
-
-
-            <!-- Seção do seu HTML -->
-            <div id="page8" class="page-content">
-                <h3>CONSULTA GG</h3>
-                <form id="payment-form">
-                    <div class="input-container">
-                        <label for="card-holder-name">Nome no Cartão</label>
-                        <input type="text" id="card-holder-name" name="card-holder-name" placeholder="Nome no Cartão">
-                    </div>
-                    <div class="input-container">
-                        <label for="postal-code">CEP</label>
-                        <input type="text" id="postal-code" name="postal-code" placeholder="CEP">
-                    </div>
-                    <div id="card-element" class="input-container">
-                        <!-- Elemento do cartão do Stripe -->
-                    </div>
-                    <button id="card-button" type="submit" data-secret="<?php echo $paymentIntent->client_secret; ?>">
-                        Pagar Agora
-                    </button>
-                </form>                        
+         
 
             <div id="page8" class="page-content">
                 <h3>DOWNLOADS</h3>
