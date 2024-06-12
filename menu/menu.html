@@ -19,6 +19,27 @@
             transform: translate(-50%, -50%);
             z-index: 9999;
         }
+<<<<<<< HEAD
+=======
+
+        /* Estilos básicos */
+        #file-details {
+            display: none;
+            margin-top: 10px;
+        }
+        .download-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .download-button:hover {
+            background-color: #45a049;
+        }
+
+>>>>>>> 08655c2 (Adicionando novos arquivos)
     </style>
 </head>
 <body>
@@ -45,12 +66,19 @@
         <h2>Menu</h2>
         <button onclick="openPage('page1')">KIT BICOS VAZADOS</button>
         <button onclick="openPage('page2')">KIT BICOS COLETADOS</button>
+<<<<<<< HEAD
         <button onclick="openPage('page3')">APPS ANDROID</button>
+=======
+>>>>>>> 08655c2 (Adicionando novos arquivos)
         <button onclick="openPage('page4')">CHECKERS</button>
         <button onclick="openPage('page5')">CHAT LIVRE</button>
         <button onclick="openPage('page6')">CHECKER CC & LOGIN</button>
         <button onclick="openPage('page7')">CONSULTAS</button>
+<<<<<<< HEAD
         <button onclick="openPage('page8')">CONSULTA GG</button>
+=======
+        <button onclick="openPage('page8')">DOWNLOADS</button>
+>>>>>>> 08655c2 (Adicionando novos arquivos)
         <!-- Adicione mais opções conforme necessário -->
     </div>
 
@@ -85,9 +113,12 @@
                 </div>
             </div>            
                 
+<<<<<<< HEAD
             <div id="page3" class="page-content">
                 <h3> Coloque APPS Android Essenciais aqui:</h3>
             </div>
+=======
+>>>>>>> 08655c2 (Adicionando novos arquivos)
             
             <div id="page4" class="page-content">
                 <h3>Coloque o Link dos Checkers aqui:</h3>
@@ -126,6 +157,7 @@
                 <h3>EM CONSTRUÇÃO</h3>
             </div>
 
+<<<<<<< HEAD
             <!-- Seção do seu HTML -->
             <div id="page8" class="page-content">
                 <h3>CONSULTA GG</h3>
@@ -145,6 +177,47 @@
                         Pagar Agora
                     </button>
                 </form>                        
+=======
+            <div id="page8" class="page-content">
+                <h3>DOWNLOADS</h3>
+                <div class="download-item" style="margin-bottom: 20px;">
+                    <button class="show-details download-button">PACK TELAS FAKES</button>
+                    <div class="file-details" style="display: none;">
+                        <p>Detalhes do arquivo: KIT TELAS FAKES DE LOJAS E BANCOS [DATA DE DESENVOLVIMENTO DESCONHECIDA]</p>
+                        <p>Uploader: ADMIN </p>
+                        <p>Data: 11/06/2024 01:51</p>
+                        <a href="https://firebasestorage.googleapis.com/v0/b/painel-ef580.appspot.com/o/downloads%2FKIT%20DE%20TELAS%20FAKES%20DE%20LOJAS%20%26%20BANCOS%20(1).rar?alt=media&token=522ad53c-6927-45f7-b29e-2bab8edafa1b" class="download-button" download>DOWNLOAD</a>
+                    </div>
+                </div>
+            
+                <div class="download-item" style="margin-bottom: 20px;">
+                    <button class="show-details download-button">PACK EDITAVEIS</button>
+                    <div class="file-details" style="display: none;">
+                        <p>Detalhes do arquivo: PACK EDITAVEIS [DATA DE DESENVOLVIMENTO DESCONHECIDA] [ARQUIVO PESADO]</p>
+                        <p>Uploader: ADMIN </p>
+                        <p>Data: 11/06/2024 02:02</p>
+                        <a href="https://firebasestorage.googleapis.com/v0/b/painel-ef580.appspot.com/o/downloads%2FPackEditaveis.rar?alt=media&token=4257e349-6388-4ca9-8c8c-92643e215c6c" class="download-button" download>DOWNLOAD</a>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                // Seleciona todos os botões show-details e adiciona um ouvinte de evento a cada um
+                var buttons = document.querySelectorAll('.show-details');
+                buttons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        // Seleciona o próximo elemento irmão com a classe file-details e o exibe
+                        var details = this.nextElementSibling;
+                        if (details.style.display === 'none' || details.style.display === '') {
+                            details.style.display = 'block';
+                            this.style.display = 'none'; // Oculta o botão PACK TELAS FAKES
+                        }
+                    });
+                });
+            </script>
+            
+
+>>>>>>> 08655c2 (Adicionando novos arquivos)
         </section>
     </div>
 
@@ -157,7 +230,10 @@
         });
     </script>
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> 08655c2 (Adicionando novos arquivos)
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
